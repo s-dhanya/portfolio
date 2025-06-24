@@ -399,7 +399,7 @@
         .about-content h3 {
             color: var(--primary-color);
             margin-bottom: 1.2rem;
-            font-size: 1.4rem;
+            font-size: 1.7rem;
             font-weight: 700;
             transition: var(--transition);
         }
@@ -777,7 +777,7 @@
             </div>
             <div class="about-content" style="text-align: justify;">
                 <p>
-                    Hi, I'm <strong>Dhanya S</strong>, an Electronics and Communication Engineering student with a solid foundation in circuits, programming, and systems design. I'm especially interested in embedded systems and digital design, and I enjoy solving complex problems with a practical and analytical mindset.
+                    Hi, I'm <strong style="color: #6366f1;">Dhanya S</strong> , an Electronics and Communication Engineering student from PSG Institute of Technology and Applied Research with a solid foundation in circuits, programming, and systems design. I'm especially interested in embedded systems and digital design, and I enjoy solving complex problems with a practical and analytical mindset.
                 </p>
                 <p>
                     Outside academics, I'm a chess player, which has helped sharpen my strategic thinking and decision-making skills — qualities I bring into my engineering work as well.
@@ -791,7 +791,7 @@
         <div class="card">
             <div class="about-content">
                 <h3>Second Place at Drone Hunt - Yugam Kumaraguru</h3>
-                <p style="text-align: justify;">As part of a team, I participated in an event called Drone Hunt at Kumaraguru College of Technology where we secured second place. The competition involved understanding and assembling a drone, learning about its core components such as propellers, ESCs, flight controllers, and batteries. I also had the opportunity to simulate the drone's flight on a video screen, which helped us visualize and fine-tune its behavior. The experience enhanced our teamwork, problem-solving, and technical understanding of drone systems.</p>
+                <p style="text-align: justify;">As part of a team, I participated in an event called Drone Hunt at Kumaraguru College of Technology where we secured <strong style="color: #6366f1;">second place</strong> . The competition involved understanding and assembling a drone, learning about its core components such as propellers, ESCs, flight controllers, and batteries. I also had the opportunity to simulate the drone's flight on a video screen, which helped us visualize and fine-tune its behavior. The experience enhanced our teamwork, problem-solving, and technical understanding of drone systems.</p>
             </div>
         </div>
     </section>
@@ -801,8 +801,8 @@
         <div class="card">
             <div class="about-content">
                 <h3>Chess</h3>
-                <p style="text-align: justify;">• I participated as a team member in the Zonal Chess Tournament held in our zone in October 2023, where our team secured <strong>first place.</strong></p>
-                <p style="text-align: justify;">• I participated as a team member in the Zonal Chess Tournament held in our zone in October 2024, where our team secured <strong>second place.</strong></p>
+                <p style="text-align: justify;">• I participated as a team member in the Zonal Chess Tournament held in our zone in October 2023, where our team secured <strong style="color: #6366f1;">first place.</strong></p>
+                <p style="text-align: justify;">• I participated as a team member in the Zonal Chess Tournament held in our zone in October 2024, where our team secured <strong style="color: #6366f1;">second place.</strong></p>
                 <p style="text-align: justify;">• This experience has strengthened my competitive spirit, and I look forward to continuing this journey with the aim of achieving more victories ahead.</p>
             </div>
         </div>
@@ -939,7 +939,6 @@
             const element = document.getElementById(sectionId);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Close mobile menu after navigation
                 mobileMenuOpen = false;
                 document.getElementById('mobile-menu').classList.remove('open');
             }
@@ -975,15 +974,8 @@
             mobileThemeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
             desktopThemeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 
-            // Add event listeners
             document.addEventListener('mousemove', handleMouseMove);
             document.addEventListener('mouseleave', handleMouseLeave);
-
-            // Intersection Observer
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
