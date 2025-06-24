@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dhanya S - Portfolio</title>
     <link rel="icon" type="image/png" href="me1.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -97,31 +97,103 @@
             opacity: 1;
         }
 
-        .theme-toggle {
+        /* Mobile Header */
+        .mobile-header {
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
             background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 50px;
-            padding: 12px 16px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
             z-index: 1000;
-            transition: var(--transition);
             box-shadow: var(--shadow);
         }
 
-        .theme-toggle:hover {
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--bg-secondary);
+            transform: scale(1.1);
+        }
+
+        .mobile-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mobile-theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .mobile-theme-toggle:hover {
             transform: scale(1.1);
             background: var(--primary-color);
             color: white;
             box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
         }
 
-        header {
+        .mobile-menu {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 999;
+            box-shadow: var(--shadow);
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu-item {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mobile-menu-item:hover {
+            background: var(--bg-secondary);
+            color: var(--primary-color);
+            transform: translateX(10px);
+        }
+
+        /* Desktop Header */
+        .desktop-header {
             background: var(--bg-card);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border-color);
@@ -141,7 +213,7 @@
             align-items: center;
         }
 
-        header h1 {
+        .desktop-header h1 {
             font-size: 2rem;
             font-weight: 700;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -151,17 +223,17 @@
             transition: var(--transition);
         }
 
-        header h1:hover {
+        .desktop-header h1:hover {
             transform: scale(1.05);
             filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.3));
         }
 
-        nav {
+        .desktop-nav {
             display: flex;
             gap: 2rem;
         }
 
-        nav a {
+        .desktop-nav a {
             color: var(--text-secondary);
             text-decoration: none;
             font-weight: 500;
@@ -172,7 +244,7 @@
             overflow: hidden;
         }
 
-        nav a::before {
+        .desktop-nav a::before {
             content: '';
             position: absolute;
             top: 0;
@@ -183,15 +255,35 @@
             transition: left 0.5s ease;
         }
 
-        nav a:hover::before {
+        .desktop-nav a:hover::before {
             left: 100%;
         }
 
-        nav a:hover {
+        .desktop-nav a:hover {
             color: var(--primary-color);
             background: var(--bg-card);
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .desktop-theme-toggle {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            padding: 12px 16px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .desktop-theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
         }
 
         section {
@@ -555,21 +647,20 @@
                 display: none;
             }
 
-            .theme-toggle {
-                top: 10px;
-                right: 10px;
-                padding: 10px 12px;
-                font-size: 1rem;
+            .desktop-header {
+                display: none;
             }
 
-            .header-container {
-                flex-direction: column;
-                gap: 1.5rem;
+            .mobile-header {
+                display: flex;
             }
-            
-            nav {
-                justify-content: center;
-                flex-wrap: wrap;
+
+            .mobile-menu {
+                display: block;
+            }
+
+            body {
+                padding-top: 60px;
             }
             
             .about-container {
@@ -610,6 +701,26 @@
                 padding: 0.8rem 1.4rem;
                 font-size: 0.9rem;
             }
+
+            .projects-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-header,
+            .mobile-menu {
+                display: none;
+            }
+
+            .desktop-header {
+                display: block;
+            }
         }
     </style>
 </head>
@@ -617,22 +728,44 @@
 <body data-theme="dark">
     <div class="cursor-gradient"></div>
     
-    <button class="theme-toggle" onclick="toggleTheme()">
-        <i class="fas fa-sun" id="theme-icon"></i>
-    </button>
+    <!-- Mobile Header -->
+    <div class="mobile-header">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-title">Dhanya S</div>
+        <button class="mobile-theme-toggle" onclick="toggleTheme()">
+            <i class="fas fa-sun" id="mobile-theme-icon"></i>
+        </button>
+    </div>
 
-    <header>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" class="mobile-menu-item" onclick="scrollToSection('about')">About</a>
+        <a href="#achievements" class="mobile-menu-item" onclick="scrollToSection('achievements')">Achievements</a>
+        <a href="#eca" class="mobile-menu-item" onclick="scrollToSection('eca')">ECA</a>
+        <a href="#projects" class="mobile-menu-item" onclick="scrollToSection('projects')">Projects</a>
+        <a href="#volunteering" class="mobile-menu-item" onclick="scrollToSection('volunteering')">Volunteering</a>
+        <a href="#skills" class="mobile-menu-item" onclick="scrollToSection('skills')">Skills</a>
+        <a href="#contact" class="mobile-menu-item" onclick="scrollToSection('contact')">Contact</a>
+    </div>
+
+    <!-- Desktop Header -->
+    <header class="desktop-header">
         <div class="header-container">
             <h1>Dhanya S</h1>
-            <nav>
-                <a href="#about">About</a>
-                <a href="#achievements">Achievements</a>
-                <a href="#eca">ECA</a>
-                <a href="#projects">Projects</a>
-                <a href="#volunteering">Volunteering</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+            <nav class="desktop-nav">
+                <a href="#about" onclick="scrollToSection('about')">About</a>
+                <a href="#achievements" onclick="scrollToSection('achievements')">Achievements</a>
+                <a href="#eca" onclick="scrollToSection('eca')">ECA</a>
+                <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
+                <a href="#volunteering" onclick="scrollToSection('volunteering')">Volunteering</a>
+                <a href="#skills" onclick="scrollToSection('skills')">Skills</a>
+                <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
             </nav>
+            <button class="desktop-theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-sun" id="desktop-theme-icon"></i>
+            </button>
         </div>
     </header>
 
@@ -757,83 +890,110 @@
     </footer>
 
     <script>
+        let mobileMenuOpen = false;
+        let theme = 'dark';
+        
         // Cursor effect
         let cursorGradient = document.querySelector('.cursor-gradient');
         let isMouseMoving = false;
         let mouseTimeout;
 
-        document.addEventListener('mousemove', (e) => {
+        const handleMouseMove = (e) => {
             const x = (e.clientX / window.innerWidth) * 100;
             const y = (e.clientY / window.innerHeight) * 100;
             
-            cursorGradient.style.setProperty('--mouse-x', x + '%');
-            cursorGradient.style.setProperty('--mouse-y', y + '%');
-            
-            if (!isMouseMoving) {
-                cursorGradient.classList.add('active');
-                isMouseMoving = true;
+            if (cursorGradient) {
+                cursorGradient.style.setProperty('--mouse-x', x + '%');
+                cursorGradient.style.setProperty('--mouse-y', y + '%');
+                
+                if (!isMouseMoving) {
+                    cursorGradient.classList.add('active');
+                    isMouseMoving = true;
+                }
+                
+                clearTimeout(mouseTimeout);
+                mouseTimeout = setTimeout(() => {
+                    cursorGradient.classList.remove('active');
+                    isMouseMoving = false;
+                }, 2000);
             }
-            
-            clearTimeout(mouseTimeout);
-            mouseTimeout = setTimeout(() => {
-                cursorGradient.classList.remove('active');
-                isMouseMoving = false;
-            }, 2000);
-        });
+        };
 
-        document.addEventListener('mouseleave', () => {
-            cursorGradient.classList.remove('active');
+        const handleMouseLeave = () => {
+            cursorGradient?.classList.remove('active');
             isMouseMoving = false;
             clearTimeout(mouseTimeout);
-        });
+        };
+
+        function toggleMobileMenu() {
+            mobileMenuOpen = !mobileMenuOpen;
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenuOpen) {
+                mobileMenu.classList.add('open');
+            } else {
+                mobileMenu.classList.remove('open');
+            }
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Close mobile menu after navigation
+                mobileMenuOpen = false;
+                document.getElementById('mobile-menu').classList.remove('open');
+            }
+        }
 
         function toggleTheme() {
             const body = document.body;
-            const themeIcon = document.getElementById('theme-icon');
-            const currentTheme = body.getAttribute('data-theme');
+            const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+            const desktopThemeIcon = document.getElementById('desktop-theme-icon');
             
-            if (currentTheme === 'dark') {
+            if (theme === 'dark') {
+                theme = 'light';
                 body.setAttribute('data-theme', 'light');
-                themeIcon.className = 'fas fa-moon';
+                mobileThemeIcon.className = 'fas fa-moon';
+                desktopThemeIcon.className = 'fas fa-moon';
                 localStorage.setItem('theme', 'light');
             } else {
+                theme = 'dark';
                 body.setAttribute('data-theme', 'dark');
-                themeIcon.className = 'fas fa-sun';
+                mobileThemeIcon.className = 'fas fa-sun';
+                desktopThemeIcon.className = 'fas fa-sun';
                 localStorage.setItem('theme', 'dark');
             }
         }
 
         document.addEventListener('DOMContentLoaded', function() {
             const savedTheme = localStorage.getItem('theme') || 'dark';
-            const themeIcon = document.getElementById('theme-icon');
+            theme = savedTheme;
+            const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+            const desktopThemeIcon = document.getElementById('desktop-theme-icon');
             
             document.body.setAttribute('data-theme', savedTheme);
-            themeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-        });
+            mobileThemeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            desktopThemeIcon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
 
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+            // Add event listeners
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseleave', handleMouseLeave);
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
+            // Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
             const animateElements = document.querySelectorAll('.card, .project-card, .skill-item');
             animateElements.forEach((el, index) => {
                 el.style.opacity = '0';
